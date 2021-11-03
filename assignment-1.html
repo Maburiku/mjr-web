@@ -6,6 +6,10 @@
 
 <body>
 
+    <div>
+        <img src="Pics/Title-One.png" id="Title" style="width: 900px; height: inherit;"></img>
+    </div>
+
     <div class="BTN-1">
         <img src="Pics/BTN-c2f.png" id="BTN-c2f" style="width: 550px; height: inherit;"></img>
         <button onclick="c2f()" id="C2F">Convert Celsius to Fahrenheit</Button>
@@ -30,9 +34,9 @@
         <h2 id="ValueF2M"></h2>
     </div>
 
-    <p>
-        <a href="index.html">Back to Home Page</a>
-    </p>
+    <div class="BTN-Back">
+        <a href="index.html"><img src="Pics/BTN-Back.png" id="ButtonBack" style="width: 200px; height: inherit;"></img>
+    </div>
     
     <script>
     function c2f(){
@@ -100,6 +104,12 @@
             background-repeat: no-repeat;
         }
 
+        #Title{
+            position: absolute;
+            left: 535px;
+            top: 70px;
+        }
+
         #C2F{
             position: absolute;
             left: 735px;
@@ -154,6 +164,12 @@
             position: absolute;
             left: 700px;
             top: 700px;
+        }
+
+        #ButtonBack{
+            position: absolute;
+            left: 870px;
+            top: 870px;
         }
 
         
