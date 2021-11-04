@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Assignment #3 | Maverick's Website</title>
+	</head>
+
+    <body>
+        <div id="Main">
+
+            <h1>Nth Factorial, Sum, & Average</h1>
+                  
+            <input name="Input" type="Text" placeholder="Input" id="Input">
+                        
+            <button id="SolveBTN" type="Button" onclick="Fact_Comp(); Sum_Comp(); Ave_Comp()">Solve</button>
+             
+            <h4 id="Fact-Out"></h4>
+            <h4 id="Sum-Out"></h4>
+            <h4 id="Ave-Out"></h4>
+            
+        </div>
+
+        <script>
+            function Fact_Comp(){
+
+                let num;
+             
+                num = document.getElementById("Input").value*1
+               
+                let counter = 1;
+                let fact = 1;
+
+                while(counter <= num){
+                    fact = fact * counter;
+                    counter++
+                }
+
+                
+                document.getElementById("Fact-Out").innerHTML='The Nth Factorial of ' + num + ' is ' + fact.toLocaleString();
+
+            }
+
+            function Sum_Comp(){
+
+                let num;
+
+                num = document.getElementById("Input").value*1
+
+                let counter = 1;
+                let sum = 0;
+
+                do{
+                    sum = sum + counter;
+
+                    counter++
+                }
+                while(counter <= num);
+
+                document.getElementById("Sum-Out").innerHTML='The Sum of the first ' + num + ' numbers is ' + sum.toLocaleString();
+
+            }
+            
+            function Ave_Comp(){
+
+                let num;
+
+                num = document.getElementById("Input").value*1
+
+                let average = 0;
+
+                for(counter = 1; counter <= num; counter++){
+
+                    average = average + counter;
+
+                    if(counter == num){
+                        average = average / num;
+                    }
+
+                }
+
+                document.getElementById("Ave-Out").innerHTML='The Average of the first ' + num + ' numbers is ' + average.toLocaleString();
+
+            }
+        </script>
+
+    </body>
+
+    <style>
+
+        @font-face {
+            src: url(Fonts/VCR_OSD_MONO_1.001.ttf);
+            font-family: VCR;
+        }
+
+        body{
+            background-image: url("WebPic/StaticWave.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+
+</html>
