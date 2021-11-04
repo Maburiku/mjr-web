@@ -43,7 +43,7 @@
                 }
 
                 
-                document.getElementById("Fact-Out").innerHTML='The Factorial of ' + num + ' is ' + fact.toLocaleString() + '.';
+                document.getElementById("Fact-Out").innerHTML='The FACTORIAL of ' + num + ' is ' + fact + '.';
 
             }
 
@@ -59,11 +59,11 @@
                 do{
                     sum = sum + counter;
 
-                    counter++
+                    counter = counter + 1;
                 }
                 while(counter <= num);
 
-                document.getElementById("Sum-Out").innerHTML='The Sum of the first ' + num + ' numbers is ' + sum.toLocaleString() + '.';
+                document.getElementById("Sum-Out").innerHTML='The SUM of the first ' + num + ' numbers is ' + sum + '.';
 
             }
             
@@ -85,7 +85,7 @@
 
                 }
 
-                document.getElementById("Ave-Out").innerHTML='The Average of the first ' + num + ' numbers is ' + average.toLocaleString() + '.';
+                document.getElementById("Ave-Out").innerHTML='The AVERAGE of the first ' + num + ' numbers is ' + average + '.';
 
             }
         </script>
