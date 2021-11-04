@@ -6,17 +6,24 @@
 	</head>
 
     <body>
-        <div id="Main">
 
-            <h1>Nth Factorial, Sum, & Average</h1>
+        <div>
+            <img src="WebPic/Title-Three.png" id="Title" style="width: 1100px; height: inherit;"></img>
+        </div>
+
+        <div class="Bubble">
+            <img src="WebPic/ContentBubble-Large.png" id="Content-Bubble" style="width: 1100px; height: 300px;"></img>
+        </div>
+
+        <div id="Main">
                   
-            <input name="Input" type="Text" placeholder="Input" id="Input">
+            <input  id="Input" type="Text" placeholder="ENTER NUMBER HERE" name="Input" style="width: 725px; height: 25px;">
                         
-            <button id="SolveBTN" type="Button" onclick="Fact_Comp(); Sum_Comp(); Ave_Comp()">Solve</button>
+            <button id="SolveBTN" type="Button" onclick="Fact_Comp(); Sum_Comp(); Ave_Comp()" style="width: 252px; height: 30px;">COMPUTE NUMBER</button>
              
-            <h4 id="Fact-Out"></h4>
-            <h4 id="Sum-Out"></h4>
-            <h4 id="Ave-Out"></h4>
+            <h2 id="Fact-Out"></h2>
+            <h2 id="Sum-Out"></h2>
+            <h2 id="Ave-Out"></h2>
             
         </div>
 
@@ -32,11 +39,11 @@
 
                 while(counter <= num){
                     fact = fact * counter;
-                    counter++
+                    counter = counter + 1;
                 }
 
                 
-                document.getElementById("Fact-Out").innerHTML='The Nth Factorial of ' + num + ' is ' + fact.toLocaleString();
+                document.getElementById("Fact-Out").innerHTML='The Factorial of ' + num + ' is ' + fact.toLocaleString() + '.';
 
             }
 
@@ -56,7 +63,7 @@
                 }
                 while(counter <= num);
 
-                document.getElementById("Sum-Out").innerHTML='The Sum of the first ' + num + ' numbers is ' + sum.toLocaleString();
+                document.getElementById("Sum-Out").innerHTML='The Sum of the first ' + num + ' numbers is ' + sum.toLocaleString() + '.';
 
             }
             
@@ -64,7 +71,7 @@
 
                 let num;
 
-                num = document.getElementById("Input").value*1
+                num = document.getElementById("Input").value * 1
 
                 let average = 0;
 
@@ -78,10 +85,14 @@
 
                 }
 
-                document.getElementById("Ave-Out").innerHTML='The Average of the first ' + num + ' numbers is ' + average.toLocaleString();
+                document.getElementById("Ave-Out").innerHTML='The Average of the first ' + num + ' numbers is ' + average.toLocaleString() + '.';
 
             }
         </script>
+
+        <div class="BTN-Back">
+            <a href="index.html"><img src="WebPic/BTN-Back.png" id="ButtonBack" style="width: 200px; height: inherit;"></img>
+        </div>
 
     </body>
 
@@ -96,6 +107,68 @@
             background-image: url("WebPic/StaticWave.png");
             background-size: cover;
             background-repeat: no-repeat;
+        }
+
+        #Title{
+            position: absolute;
+            left: 465px;
+            top: 250px;
+        }
+
+        #Content-Bubble{
+            position: absolute;
+            left: 470px;
+            top: 390px;
+        }
+
+        #Input{
+            position: absolute;
+            left: 520px;
+            top: 435px;
+
+            font-family: VCR;
+        }
+
+        #SolveBTN{
+            position: absolute;
+            left: 1260px;
+            top: 435px;
+
+            font-family: VCR;
+            letter-spacing: 1px;
+        }
+
+        #Fact-Out{
+            position: absolute;
+            left: 520px;
+            top: 475px;
+
+            font-family: VCR;
+            letter-spacing: 1px;
+        }
+
+        #Sum-Out{
+            position: absolute;
+            left: 520px;
+            top: 525px;
+
+            font-family: VCR;
+            letter-spacing: 1px;
+        }
+
+        #Ave-Out{
+            position: absolute;
+            left: 520px;
+            top: 575px;
+
+            font-family: VCR;
+            letter-spacing: 1px;
+        }
+
+        #ButtonBack{
+            position: absolute;
+            left: 923px;
+            top: 700px;
         }
 
     </style>

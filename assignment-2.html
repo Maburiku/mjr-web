@@ -25,36 +25,36 @@
                 <h1 id="TaxHeader"></h1>
                 <h1 id="InTax"></h1>
             
-            <script>
-                function taxComputer(){
-                    var TaxInput;
-                    var InTax = 0.00;
+                <script>
+                    function taxComputer(){
+                        var TaxInput;
+                        var InTax = 0.00;
     
-                    TaxInput = document.getElementById("TaxInput").value*1;
-                    console.log(TaxInput);
+                        TaxInput = document.getElementById("TaxInput").value*1;
+                        console.log(TaxInput);
     
-                    if(TaxInput <= 250000.00001){
-                        InTax = 0.00;
+                        if(TaxInput <= 250000.00001){
+                            InTax = 0.00;
+                        }
+                        else if(TaxInput > 250000.00001 && TaxInput <= 400000.00001){
+                            InTax = (TaxInput - 250000) * 0.2;
+                        }
+                        else if(TaxInput > 400000.00001 && TaxInput <= 800000.00001){
+                            InTax = (TaxInput - 400000) * 0.25 + 30000;
+                        }
+                        else if(TaxInput > 800000.00001 && TaxInput <= 2000000.00001){
+                            InTax = (TaxInput - 800000) * 0.30 + 130000;
+                        }
+                        else if(TaxInput > 2000000.00001 && TaxInput <= 8000000.00001){
+                            InTax = (TaxInput - 2000000) * 0.32 + 490000;
+                        }
+                        else if(TaxInput > 8000000){
+                            InTax = (TaxInput - 8000000) * 0.35 + 2410000;
+                        }
+                        document.getElementById("TaxHeader").innerHTML
+                                  = 'INCOME TAX: ' + InTax.toFixed(2);
                     }
-                    else if(TaxInput > 250000.00001 && TaxInput <= 400000.00001){
-                        InTax = (TaxInput - 250000) * 0.2;
-                    }
-                    else if(TaxInput > 400000.00001 && TaxInput <= 800000.00001){
-                        InTax = (TaxInput - 400000) * 0.25 + 30000;
-                    }
-                    else if(TaxInput > 800000.00001 && TaxInput <= 2000000.00001){
-                        InTax = (TaxInput - 800000) * 0.30 + 130000;
-                    }
-                    else if(TaxInput > 2000000.00001 && TaxInput <= 8000000.00001){
-                        InTax = (TaxInput - 2000000) * 0.32 + 490000;
-                    }
-                    else if(TaxInput > 8000000){
-                        InTax = (TaxInput - 8000000) * 0.35 + 2410000;
-                    }
-                    document.getElementById("TaxHeader").innerHTML
-                              = 'INCOME TAX: ' + InTax.toFixed(2);
-                }
-            </script>
+                </script>
             </p>
         </div>
 
