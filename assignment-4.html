@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Assignment #4 | Maverick's Website</title>
+  </head>
+
+  <div class="Bubble">
+    <img src="WebPic/ContentBubble-Four.png" id="Content-Bubble" style="width: 2000px; height: 960px;"></img>
+  </div>
+
+  <div>
+    <img src="WebPic/Title-Four.png" id="Title" style="width: 700px; height: inherit;"></img>
+  </div>
+
+  
+
+  <div id="Top">
+
+    <body onload="MainList()"></body>
+
+    <label id="EmpNameText" for="EmpName">EMPLOYEE'S NAME:</label>
+    <input id="EmpName" name="EmpName" type="text" oninput="computeGrossPay"></input>
+
+    <label id="DayNumText" for="DayNum">DAYS WORKED:</label>
+    <input id="DayNum" name="DayNum" type="number" oninput="computeGrossPay"></input>
+
+    <label id="DayRateText" for="DayRate">DAILY RATE:</label>
+    <input id="DayRate" name="DayRate" type="number" oninput="computeGrossPay"></input>
+
+    <label id="AmountText" for="Amount">DEDUCTION AMOUNT:</label>
+    <input id="Amount" name="Amount" type="number"></input>
+    <button onclick="EmpADD()">ADD EMPLOYEE</button>
+  </div>
+
+  <div id="Bot">
+    <p>
+      <label id="EmpAmountText" for="EmpAmount">NUMBER OF EMPLOYEE:</label>
+      <input id="EmpAmount" name="EmpAmount" type="number" readonly></input>
+      <button onclick="MainList()">CLEAR PAYROLL</button><button onclick="DropList()">SHOW LIST</button>
+
+      <label id="DeleteText" for="Delete">DELETE EMPLOYEE(N):</label>
+      <input id="EmpNUM" name="EmpNUM" type="number"></input>
+      <button onclick="EmpDEL()">DELETE</button> 
+    </p>
+
+    <p id="MainHeader"></p>
+    <p id="List"></p>
+    <p id="ListFooter"></p>
+
+  </div>
+
+  <script>
+    function MainList(){
+      list=[];
+      document.getElementById("EmpAmount").value = list.length;
+      document.getElementById("MainHeader").innerHTML = "";
+      document.getElementById("List").innerHTML = "";
+      document.getElementById("ListFooter").innerHTML = "";
+      document.getElementById("EmpAmount").value = 0;
+
+    }
+
+    function EmpDEL(){
+      console.log(document.getElementById("EmpNUM").value);
+      var EmpNUM = document.getElementById("EmpNUM").value;
+      var employeeIndex = EmpNUM - 1;
+  
+      if(list != null){
+        for(i = 0; list.length > i; i++){
+
+          if(i == employeeIndex){
+            list.splice(employeeIndex, 1);
+          }
+
+        }
+      console.log(list.length);
+      document.getElementById("EmpAmount").value = list.length;
+      }
+      DropList();
+
+    }
+
+
+    function EmpADD(){
+      var employee = {
+        "name": "",
+        "dayWorked": 0,
+        "dailyRate": 0,
+        "deductionAmount": 0,
+        "grossPay" : function GrossPay(){
+          return Math.round(this.dayWorked * this.dailyRate * 100)/100;
+        },
+
+        "netPay" : 0
+
+      }
+
+      employee.name = document.getElementById("EmpName").value;
+      employee.dayWorked = document.getElementById("DayNum").value;
+      employee.dailyRate = document.getElementById("DayRate").value;
+      employee.deductionAmount = document.getElementById("Amount").value;
+
+      employee.netPay = employee.GrossPay() - employee.deductionAmount;
+
+      console.log(list);
+      console.log(employee.name);
+      console.log(employee.dayWorked);
+      console.log(employee.dailyRate);
+
+      list.push(employee);
+
+      console.log(list.length);
+      document.getElementById("EmpAmount").value = list.length;
+
+    }
+
+
+    function DropList(){
+      var Num,l,TextList,totalAmount,EmpNUM;
+      l = list.length;
+
+      for(Num = 0, totalAmount = 0, TextList=""; Num < l; Num++){
+        EmpNUM = Num + 1;
+        TextList+="<p> "
+          +"  " + EmpNUM + "  "
+          +list[Num].name + "  "
+          +list[Num].dayWorked + "  "
+          +list[Num].dailyRate + "  "
+          +list[Num].deductionAmount + "  "
+          +list[Num].GrossPay() + "  "
+          +list[Num].netPay + "  "
+          + "</p>";
+
+          totalAmount += list[Num].GrossPay();
+
+      }
+
+      console.log(TextList);
+      document.getElementById("MainHeader").innerHTML =
+      "No.".padEnd(30, '           ')
+      + "Name".padEnd(30,'           ')
+      + "Days Worked".padStart(10, '           ')
+      + "Daily Rate".padStart(15, '           ')
+      + "Deduction Amount".padStart(15, '           ');
+
+      document.getElementById("List").innerHTML = TextList;
+
+      document.getElementById("ListFooter").innerHTML = "Employees:"+list.length;
+
+    }
+
+    var list = [];
+  </script>
+
+  <div class="BTN-Back">
+    <a href="index.html"><img src="WebPic/BTN-Back.png" id="ButtonBack" style="width: 200px; height: inherit;"></img>
+  </div>
+
+  <style>
+    @font-face {
+      src: url(Fonts/VCR_OSD_MONO_1.001.ttf);
+      font-family: VCR;
+    }
+
+    body{
+      background-color: rgb(34, 22, 44);
+      background-image: url("WebPic/StaticWave.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    #Title{
+      position: absolute;
+      left: 700px;
+      top: 70px;
+    }
+
+    #Content-Bubble{
+      position: absolute;
+      left: 20px;
+      top: 50px;
+    }
+
+    #Top{
+      position: absolute;
+      left: 320px;
+      top: 240px;
+
+      font-family: VCR;
+    }
+
+    #Bot{
+      position: absolute;
+      left: 320px;
+      top: 260px;
+
+      font-family: VCR;
+    }
+
+    #ButtonBack{
+      position: absolute;
+      left: 923px;
+      top: 905px;
+    }
+
+  </style>
+</html>
