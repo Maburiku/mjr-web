@@ -31,6 +31,7 @@
     <label id="AmountText" for="Amount">DEDUCTION AMOUNT:</label>
     <input id="Amount" name="Amount" type="number"></input>
     <button onclick="EmpADD()">ADD EMPLOYEE</button>
+
   </div>
 
   <div id="Bot">
@@ -83,12 +84,12 @@
 
 
     function EmpADD(){
-      var employee = {
+      var Emp = {
         "name": "",
         "dayWorked": 0,
         "dailyRate": 0,
         "deductionAmount": 0,
-        "grossPay" : function GrossPay(){
+        "grossPay" : function grossPay(){
           return Math.round(this.dayWorked * this.dailyRate * 100)/100;
         },
 
@@ -96,19 +97,19 @@
 
       }
 
-      employee.name = document.getElementById("EmpName").value;
-      employee.dayWorked = document.getElementById("DayNum").value;
-      employee.dailyRate = document.getElementById("DayRate").value;
-      employee.deductionAmount = document.getElementById("Amount").value;
+      Emp.name = document.getElementById("EmpName").value;
+      Emp.dayWorked = document.getElementById("DayNum").value;
+      Emp.dailyRate = document.getElementById("DayRate").value;
+      Emp.deductionAmount = document.getElementById("Amount").value;
 
-      employee.netPay = employee.GrossPay() - employee.deductionAmount;
+      Emp.netPay = Emp.grossPay() - Emp.deductionAmount;
 
       console.log(list);
-      console.log(employee.name);
-      console.log(employee.dayWorked);
-      console.log(employee.dailyRate);
+      console.log(Emp.name);
+      console.log(Emp.dayWorked);
+      console.log(Emp.dailyRate);
 
-      list.push(employee);
+      list.push(Emp);
 
       console.log(list.length);
       document.getElementById("EmpAmount").value = list.length;
@@ -122,31 +123,23 @@
 
       for(Num = 0, totalAmount = 0, TextList=""; Num < l; Num++){
         EmpNUM = Num + 1;
-        TextList+="<p> "
-          +"  " + EmpNUM + "  "
-          +list[Num].name + "  "
-          +list[Num].dayWorked + "  "
-          +list[Num].dailyRate + "  "
-          +list[Num].deductionAmount + "  "
-          +list[Num].GrossPay() + "  "
-          +list[Num].netPay + "  "
-          + "</p>";
+        TextList+="<p><b>EMPLOYEE NO. </b>"
+          +EmpNUM + "ㅤㅤㅤㅤㅤ<b>NAME: </b>"
+          +list[Num].name + "ㅤㅤㅤㅤㅤ<b>DAYS WORKED: </b>"
+          +list[Num].dayWorked + "ㅤㅤㅤㅤㅤ<b>DAILY RATE: </b>"
+          +list[Num].dailyRate + "ㅤㅤㅤㅤㅤ<b>DEDUCTION AMOUNT: </b>"
+          +list[Num].deductionAmount + "ㅤㅤㅤㅤㅤ<b>GROSS PAY: </b>"
+          +list[Num].grossPay() + "ㅤㅤㅤㅤㅤ<b>NET PAY: </b>"
+          +list[Num].netPay + "</p>";
 
-          totalAmount += list[Num].GrossPay();
+          totalAmount += list[Num].grossPay();
 
       }
 
       console.log(TextList);
-      document.getElementById("MainHeader").innerHTML =
-      "No.".padEnd(30, '           ')
-      + "Name".padEnd(30,'           ')
-      + "Days Worked".padStart(10, '           ')
-      + "Daily Rate".padStart(15, '           ')
-      + "Deduction Amount".padStart(15, '           ');
 
-      document.getElementById("List").innerHTML = TextList;
-
-      document.getElementById("ListFooter").innerHTML = "Employees:"+list.length;
+      document.getElementById("MainHeader").innerHTML = TextList;
+      document.getElementById("ListFooter").innerHTML = "<b>EMPLOYEES: </b>" + list.length;
 
     }
 
@@ -173,7 +166,7 @@
     #Title{
       position: absolute;
       left: 700px;
-      top: 70px;
+      top: 60px;
     }
 
     #Content-Bubble{
@@ -184,7 +177,7 @@
 
     #Top{
       position: absolute;
-      left: 320px;
+      left: 130px;
       top: 240px;
 
       font-family: VCR;
@@ -192,7 +185,7 @@
 
     #Bot{
       position: absolute;
-      left: 320px;
+      left: 130px;
       top: 260px;
 
       font-family: VCR;
